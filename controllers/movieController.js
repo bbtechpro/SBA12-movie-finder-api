@@ -41,3 +41,6 @@ const searchMovies = async (req, res) => {
     res.status(500).json({ error: 'An error occurred while fetching data from OMDb' });
   } 
 };
+
+const getMovieDetails = async (req, res) => {
+  const { id } = req.params;
