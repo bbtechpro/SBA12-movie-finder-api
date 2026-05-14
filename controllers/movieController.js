@@ -44,3 +44,24 @@ const searchMovies = async (req, res) => {
 
 const getMovieDetails = async (req, res) => {
   const { id } = req.params;
+    if (!id) {
+    return res.status(400).json({ error: 'Movie ID is required' });
+  }
+    try {
+    const response = await axios.get('http://www.omdbapi.com/', {
+      params: {
+        i: id,
+        apikey: process.env.OMDB_API_KEY,
+      },
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error fetching data from OMDb:', error);
+    res.status(500).json({ error: 'An error occurred while fetching data from OMDb' });
+  }
+}; 
+
+module.exports = {
+  searchMovies,
+  getMovieDetails,
+};
