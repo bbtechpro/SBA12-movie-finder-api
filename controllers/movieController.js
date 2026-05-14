@@ -28,3 +28,16 @@ const searchMovies = async (req, res) => {
     if (!title) {
     return res.status(400).json({ error: 'Title query parameter is required' });
   }
+    try {
+    const response = await axios.get('http://www.omdbapi.com/', {
+      params: {
+        s: title,
+        apikey: process.env.OMDB_API_KEY,
+      },
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error fetching data from OMDb:', error);
+    res.status(500).json({ error: 'An error occurred while fetching data from OMDb' });
+  } 
+};
