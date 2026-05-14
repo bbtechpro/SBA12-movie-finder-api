@@ -68,3 +68,5 @@ Test your endpoints using a tool like Postman or by visiting the URLs in your br
 http://localhost:3001/api/search?title=batman
 http://localhost:3001/api/movies/tt0372784
 Submit a link to your completed GitHub repository. Ensure the .env file is not included in the repository.
+
+Included screenshots of successful tests: [](Screenshot-test-search-for-Batman.jpg) and [.](Screenshot-test-search-for-Movie-details.jpg)
